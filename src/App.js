@@ -5,11 +5,11 @@ var createGuest = require("cross-domain-storage/guest");
 
 var storageHost = createHost([
   {
-    origin: "https://mirats-micro-1.netlify.app/",
+    origin: "https://mirats-1.netlify.app",
     allowedMethods: ["get", "set", "remove"],
   },
   {
-    origin: "https://mirats-micro-2.netlify.app/",
+    origin: "https://mirats-2.netlify.app",
     allowedMethods: ["get"],
   },
 ]);
@@ -42,9 +42,9 @@ function App() {
           onClick={(e) => {
             e.preventDefault();
             var bazStorage = createGuest(
-              window.location.href === "https://mirats-micro-2.netlify.app/"
-                ? "https://mirats-micro-1.netlify.app/"
-                : "https://mirats-micro-2.netlify.app/"
+              window.location.href === "https://mirats-1.netlify.app"
+                ? "https://mirats-2.netlify.app"
+                : "https://mirats-1.netlify.app/"
             );
             bazStorage.get("localStorageKey", function (error, value) {
               // value for the key of 'fizz' will be retrieved from localStorage on www.baz.com
